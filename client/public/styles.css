@@ -1,0 +1,764 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+svg {
+  fill: #5a1616;
+}
+
+.navbar-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar-container .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 40px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  width: 400px;
+  background-color: #5a1616;
+}
+
+.navbar-container .navbar a {
+  position: relative;
+  top: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-container .navbar a:hover {
+  text-decoration: underline;
+}
+
+.form-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 150px;
+          column-gap: 150px;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#dddddd));
+  background: linear-gradient(to bottom, #f7f7f7, #dddddd);
+  height: 721px;
+  padding-top: 150px;
+}
+
+.form-container h1 {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 80px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#e40c0c), to(#5a1616));
+  background: linear-gradient(to top, #e40c0c, #5a1616);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant: small-caps;
+}
+
+.form-container .form {
+  width: 300px;
+  height: 300px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#dfdede));
+  background: linear-gradient(to bottom, #dddddd, #dfdede);
+  border-radius: 10px;
+  -webkit-filter: drop-shadow(3px 3px 3px black);
+          filter: drop-shadow(3px 3px 3px black);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-container .form .staffandstudent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 120px;
+}
+
+.form-container .form .staffandstudent div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form-container .form .staffandstudent div a {
+  color: black;
+}
+
+.form-container .form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-container .form form h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.form-container .form form label {
+  color: black;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.form-container .form form input {
+  height: 40px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 10px;
+}
+
+.form-container .form form .login {
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: #5a1616;
+}
+
+.form-container .form form .login:hover {
+  cursor: pointer;
+}
+
+.progress-container {
+  width: 60px;
+  background-color: transparent;
+}
+
+.progress-container div {
+  background: transparent;
+  width: 60px;
+  border-top: 15px dotted white;
+  -webkit-animation: myanimation 1s infinite;
+          animation: myanimation 1s infinite;
+}
+
+@-webkit-keyframes myanimation {
+  from {
+    width: 60px;
+  }
+  to {
+    width: 30px;
+  }
+}
+
+@keyframes myanimation {
+  from {
+    width: 60px;
+  }
+  to {
+    width: 30px;
+  }
+}
+
+.loading-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loading-container .loading-icon {
+  width: 150px;
+  height: 150px;
+  border-top: 7px solid #5a1616;
+  border-radius: 50%;
+  -webkit-animation: loading 1s linear infinite;
+          animation: loading 1s linear infinite;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.studentinterface-container {
+  margin-top: 200px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.studentinterface-container .options {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 200px;
+          column-gap: 200px;
+}
+
+.studentinterface-container .options div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 3;
+  padding-top: 30px;
+  width: 150px;
+  height: 150px;
+  background-color: #ebebeb;
+  border-radius: 10px;
+}
+
+.studentinterface-container .options div a {
+  color: black;
+}
+
+.footer-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 270px;
+}
+
+.footer-container footer {
+  width: 400px;
+  height: 70px;
+  background-color: #5a1616;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  line-height: 2.5;
+}
+
+.footer-container footer .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.footer-container footer .links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-container footer .links a:hover {
+  text-decoration: underline;
+}
+
+.footer-container footer p {
+  text-align: center;
+  color: white;
+  font-size: 13px;
+}
+
+.assignments-navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 55px;
+  border-bottom: 3px solid grey;
+  padding-top: 5px;
+}
+
+.assignments-navbar .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 20px;
+}
+
+.assignments-navbar .logo h4 {
+  line-height: 3;
+}
+
+.assignments-navbar .rollno {
+  margin-right: 20px;
+}
+
+.assignments-navbar .rollno p {
+  font-variant: small-caps;
+  font-weight: bolder;
+}
+
+.assignments-container .assignments-stuff {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.assignments-container .assignments-stuff .pending-container {
+  margin-top: 50px;
+  width: 1200px;
+}
+
+.assignments-container .assignments-stuff .pending-container h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 27px;
+  font-weight: bolder;
+}
+
+.assignments-container .assignments-stuff .pending-container h2 p {
+  font-size: 15px;
+  height: 23px;
+  width: 23px;
+  text-align: center;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works a {
+  line-height: 5;
+  color: black;
+  text-decoration: underline;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works div {
+  width: 300px;
+  height: 100px;
+  background-color: #ebebeb;
+  line-height: 2;
+  border-radius: 10px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works div:hover {
+  cursor: pointer;
+  background-color: #d6d6d6;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works div:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works div h3 {
+  color: #5a1616;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works div h4 {
+  text-align: center;
+}
+
+.assignments-container .assignments-stuff .pending-container .pending-works div p {
+  text-align: center;
+}
+
+.assignments-container .assignments-stuff .subjects-container {
+  margin-top: 50px;
+}
+
+.assignments-container .assignments-stuff .subjects-container h2 {
+  font-size: 27px;
+  font-weight: bolder;
+}
+
+.assignments-container .assignments-stuff .subjects-container .subjects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 30px;
+}
+
+.assignments-container .assignments-stuff .subjects-container .subjects a {
+  color: black;
+  line-height: 4;
+}
+
+.assignments-container .assignments-stuff .subjects-container .subjects div {
+  width: 200px;
+  height: 80px;
+  background-color: #ebebeb;
+  line-height: 2.7;
+  border-radius: 10px;
+}
+
+.assignments-container .assignments-stuff .subjects-container .subjects div h2 {
+  color: #5a1616;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.assignments-container .assignments-stuff .subjects-container .subjects div h2:hover {
+  cursor: pointer;
+}
+
+.assignment-list-container h1 {
+  text-align: center;
+}
+
+.assignment-list-container .list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.assignment-list-container .list .list-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+}
+
+.assignment-list-container .list .list-item .chapterandtime {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 500px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #ebebeb;
+}
+
+.assignment-list-container .list .list-item .chapterandtime div {
+  line-height: 1.8;
+}
+
+.assignment-list-container .list .list-item .chapterandtime div h2 {
+  color: #5a1616;
+}
+
+.assignment-list-container .list .list-item .chapterandtime .time {
+  margin-top: 15px;
+  line-height: 2;
+  color: red;
+}
+
+.assignment-list-container .list .list-item .chapterandtime .time p {
+  color: black;
+}
+
+.assignment-list-container .list .list-item button {
+  background-color: #07a807;
+  height: 40px;
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: white;
+  position: relative;
+  top: 30px;
+}
+
+.assignment-list-container .list .list-item button:hover {
+  cursor: pointer;
+}
+
+.assignment-list-container .list .list-item .submit {
+  background-color: #07a807;
+}
+
+.assignment-list-container .list .list-item .upload {
+  background-color: #05659c;
+}
+
+.assignment-list-container .list .list-item label {
+  height: 40px;
+  position: relative;
+  top: 30px;
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  padding: 10px;
+}
+
+.assignment-list-container .list .list-item label:hover {
+  cursor: pointer;
+}
+
+.staffhome-container {
+  margin-top: 250px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.staffhome-container .staffhome-items {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+}
+
+.staffhome-container .staffhome-items div {
+  width: 200px;
+  height: 100px;
+  background-color: #ebebeb;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+}
+
+.staffhome-container .staffhome-items div a {
+  margin-top: 20px;
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+  -webkit-text-decoration-color: #5a1616;
+          text-decoration-color: #5a1616;
+}
+
+.assignassignment-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+}
+
+.assignassignment-container h1 {
+  text-align: center;
+}
+
+.assignassignment-container .assign-form {
+  width: 500px;
+  height: 500px;
+  border: 4px solid #5a1616;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-shadow: 0 0 2px black;
+          box-shadow: 0 0 2px black;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.assignassignment-container .assign-form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.assignassignment-container .assign-form form label {
+  font-weight: bolder;
+}
+
+.assignassignment-container .assign-form form span {
+  margin-bottom: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.assignassignment-container .assign-form form span select {
+  width: 100px;
+  border: 2px solid black;
+  border-radius: 3px;
+  font-family: "Poppins", sans-serif;
+}
+
+.assignassignment-container .assign-form form span select option {
+  font-family: "Poppins", sans-serif;
+}
+
+.assignassignment-container .assign-form form span input {
+  width: 250px;
+  height: 30px;
+  border-radius: 3px;
+  font-family: "Poppins", sans-serif;
+  border: 2px solid black;
+}
+
+.assignassignment-container .assign-form form span .marks {
+  width: 80px;
+}
+
+.assignassignment-container .assign-form form span .dateinput {
+  width: 150px;
+}
+
+.assignassignment-container .assign-form form .description textarea {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  border-radius: 3px;
+}
+
+.assignassignment-container .assign-form form button {
+  background-color: #5a1616;
+  color: white;
+  font-weight: bolder;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1.5px;
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.assignassignment-container .assign-form form button:hover {
+  background-color: #802828;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  .form-container {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .studentinterface-container {
+    margin-top: 100px;
+  }
+  .studentinterface-container .options {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    row-gap: 30px;
+  }
+  .footer-container {
+    margin-top: 100px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
