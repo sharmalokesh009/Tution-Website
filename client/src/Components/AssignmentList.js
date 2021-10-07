@@ -8,6 +8,7 @@ export default function AssignmentList() {
   const [uploadedfile, setuploadedfile] = useState("");
   const [loading, setloading] = useState(false);
   const [assignments, setasssignments] = useState([]);
+  const [subject , setsubject] = useState("");
 
   async function fetchdata() {
     try {
@@ -26,16 +27,17 @@ export default function AssignmentList() {
 
   function handlechange(e) {
     setuploadedfile(e.target.files[0]);
-  
+    setsubject(e.target.name);
   }
 
   function handlesubmit(e) {
     e.preventDefault();
-    console.log(uploadedfile);
     const formdata = new FormData();
     formdata.append("file", uploadedfile);
     formdata.append('rollno' , 11801092);
     formdata.append('group' , "4CE-3");
+    formdata.append('subject' , subject);
+    
     axios
       .post("http://localhost:5000/upload",formdata,
        {
@@ -79,6 +81,7 @@ export default function AssignmentList() {
                     type="file"
                     onChange={handlechange}
                     id="upload"
+                    name = {assignment.Subject}
                     hidden
                   />
                   <label className="upload" for="upload">

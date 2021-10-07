@@ -1,7 +1,73 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ApproveIcon from "../Icons/ApproveIcon";
+import DeclineIcon from "../Icons/DeclineIcon";
+import Loading from "./Loading";
 
-export default function SubmittedAssignments(){
-    return <div className="submitted-container">
+export default function SubmittedAssignments() {
+  const [loading, setloading] = useState(false);
+  const [assignments, setassignments] = useState([]);
 
+  useEffect(() => {
+    fetchdata();
+  }, []);
+
+  async function fetchdata() {
+    try {
+      const data = await axios
+        .get("http://localhost:5000/submitted")
+        .then((res) => {
+          console.log(res.data);
+          setassignments(res.data);
+
+          setloading(true);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  return (
+    <div className="submitted-container">
+      <h1>Recently Submitted Assignments</h1>
+      {loading ? (
+        <table>
+          <tbody>
+            <tr>
+              <th>Roll No</th>
+              <th>Batch</th>
+              <th>Subject</th>
+              <th>Document</th>
+              <th>Marks</th>
+              <th>Status</th>
+            </tr>
+            {assignments.map((assignment, index) => {
+              return (
+                <tr key={index}>
+                  <td>{assignment.RollNo}</td>
+                  <td>{assignment.Group}</td>
+                  <td>{assignment.Subject}</td>
+                  <td>
+                    <a
+                      download="File"
+                      href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
+                    >
+                      {assignment.File.name}
+                    </a>
+                  </td>
+                  <td><input type="number" /></td>
+                  <td>
+                    <ApproveIcon/>
+                    <DeclineIcon/>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <Loading />
+      )}
     </div>
+  );
 }

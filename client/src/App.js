@@ -8,6 +8,7 @@ import Assignments from "./Components/Assignments";
 import Staffhome from "./Components/Staffhome";
 import AssignAsssignment from "./Components/AssignAssignment";
 import AssignmentList from "./Components/AssignmentList";
+import SubmittedAssignments from "./Components/SubmittedAssignments";
 
 export default function App() {
   return (
@@ -18,33 +19,44 @@ export default function App() {
             <Form staffdisplay="none" studentdisplay="none" />
           </Route>
           <Route path="/staff">
-            <Form staffandstudentdisplay="none" studentdisplay="none" path="staffhome" />
+            <Form
+              staffandstudentdisplay="none"
+              studentdisplay="none"
+              path="staffhome"
+            />
           </Route>
-          <Route path='/student'>
-              <Form staffandstudentdisplay="none" staffdisplay="none" path="studenthome" />
+          <Route path="/student">
+            <Form
+              staffandstudentdisplay="none"
+              staffdisplay="none"
+              path="studenthome"
+            />
           </Route>
           <Route path="/studenthome">
             <Navbar />
-            <br/>
+            <br />
             <Studenthome />
-            <br/>
+            <br />
             <Footer />
           </Route>
-          <Route path='/staffhome' >
-            <Navbar/>
-            <br/>
-            <Staffhome/>
-            <br/>
-            <Footer/>
+          <Route path="/staffhome">
+            <Navbar />
+            <br />
+            <Staffhome />
+            <br />
+            <Footer />
           </Route>
           <Route path="/assignments">
             <Assignments />
           </Route>
-          <Route path='/pending'>
-            <AssignmentList/>
+          <Route path="/pending">
+            <AssignmentList />
           </Route>
-          <Route path='/assign'>
-            <AssignAsssignment/>
+          <Route path="/assign">
+            <AssignAsssignment />
+          </Route>
+          <Route path="/submitted">
+            <SubmittedAssignments />
           </Route>
         </Switch>
       </div>

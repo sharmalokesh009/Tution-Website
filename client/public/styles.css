@@ -13,6 +13,40 @@ svg {
   fill: #5a1616;
 }
 
+.approve-icon {
+  fill: green;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.approve-icon:hover {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+  cursor: pointer;
+}
+
+.approve-icon:active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.decline-icon {
+  fill: red;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.decline-icon:hover {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+  cursor: pointer;
+}
+
+.decline-icon:active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 .navbar-container {
   display: -ms-grid;
   display: grid;
@@ -742,6 +776,39 @@ svg {
 .assignassignment-container .assign-form form button:hover {
   background-color: #802828;
   cursor: pointer;
+}
+
+.submitted-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.submitted-container h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.submitted-container table {
+  background-color: #ebebeb;
+}
+
+.submitted-container table tbody tr th {
+  width: 100px;
+  color: #5a1616;
+}
+
+.submitted-container table tbody tr td {
+  text-align: center;
+}
+
+.submitted-container table tbody tr td input {
+  width: 50px;
 }
 
 @media only screen and (max-width: 1000px) {

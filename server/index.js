@@ -25,6 +25,7 @@ const AssignmentSchema = new mongoose.Schema({
 const SubmittedAssignments = new mongoose.Schema({
     RollNo : Number,
     Group : String,
+    Subject : String,
     File : Object
 })
 
@@ -62,6 +63,7 @@ app.post('/upload', (req, res) => {
     const assignmentdetails = {
         RollNo : req.body.rollno,
         Group : req.body.group,
+        Subject : req.body.subject,
         File : file
     }
     console.log(assignmentdetails);

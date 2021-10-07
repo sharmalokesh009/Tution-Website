@@ -7,7 +7,7 @@ export default function Staffhome(){
         <div className="staffhome-container">
         <div className="staffhome-items">
             <div>
-                <Link to='/' >Recently <br/>Submitted</Link>
+                <Link to='/submitted' >Recently <br/>Submitted</Link>
             </div>
             <div>
                 <Link to='/' >Pending <br/> Assignments</Link>

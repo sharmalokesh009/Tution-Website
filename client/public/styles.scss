@@ -15,6 +15,30 @@ svg{
     fill: $primary-color;
 }
 
+.approve-icon{
+  fill: green;
+  transition: all 0.3s;
+  &:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+  }
+  &:active{
+    transform: scale(1);
+  }
+}
+
+.decline-icon{
+  fill: red;
+  transition: all 0.3s;
+  &:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+  }
+  &:active{
+    transform: scale(1);
+  }
+}
+
 .navbar-container{
   display: grid;
   grid-template-columns: auto;
@@ -535,6 +559,35 @@ svg{
         &:hover{
           background-color: rgb(128, 40, 40);
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.submitted-container{
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  h1{
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+  table{
+    
+    background-color: $secondary-color;
+    tbody{
+      tr{
+        th{
+          width: 100px;
+          color: $primary-color;
+        }
+        td{
+          text-align: center;
+          input{
+            width: 50px;
+          }
         }
       }
     }
