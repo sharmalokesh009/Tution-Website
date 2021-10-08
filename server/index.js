@@ -66,7 +66,6 @@ app.post('/upload', (req, res) => {
         Subject : req.body.subject,
         File : file
     }
-    console.log(assignmentdetails);
      submittedassignments.insertMany(assignmentdetails , (err) => {
          if(err){
              console.log(err);

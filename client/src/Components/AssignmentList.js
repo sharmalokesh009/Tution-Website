@@ -8,12 +8,13 @@ export default function AssignmentList() {
   const [uploadedfile, setuploadedfile] = useState("");
   const [loading, setloading] = useState(false);
   const [assignments, setasssignments] = useState([]);
-  const [subject , setsubject] = useState("");
+  const [subject, setsubject] = useState("");
 
   async function fetchdata() {
     try {
       await axios.get("http://localhost:5000/assignments").then((res) => {
         setasssignments(res.data);
+        console.log(res.data);
       });
       setloading(true);
     } catch (e) {
@@ -34,18 +35,16 @@ export default function AssignmentList() {
     e.preventDefault();
     const formdata = new FormData();
     formdata.append("file", uploadedfile);
-    formdata.append('rollno' , 11801092);
-    formdata.append('group' , "4CE-3");
-    formdata.append('subject' , subject);
-    
+    formdata.append("rollno", 11801092);
+    formdata.append("group", "4CE-3");
+    formdata.append("subject", subject);
+
     axios
-      .post("http://localhost:5000/upload",formdata,
-       {
-         headers :{
-          'Content-Type' : 'multipart/form-data'
-         }
-       }
-       )
+      .post("http://localhost:5000/upload", formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log(res.data);
       })
@@ -78,18 +77,19 @@ export default function AssignmentList() {
                     </h4>
                   </div>
                   <input
+                    name={assignment.Subject}
                     type="file"
                     onChange={handlechange}
-                    id="upload"
-                    name = {assignment.Subject}
+                    id={`${index}-upload`}
                     hidden
                   />
-                  <label className="upload" for="upload">
+                  <label className="upload" for={`${index}-upload`}>
                     Upload
                   </label>
                   <button onClick={handlesubmit} className="submit">
                     Submit
                   </button>
+                 
                   <br />
                 </div>
               );

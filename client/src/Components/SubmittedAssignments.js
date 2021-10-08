@@ -3,6 +3,7 @@ import axios from "axios";
 import ApproveIcon from "../Icons/ApproveIcon";
 import DeclineIcon from "../Icons/DeclineIcon";
 import Loading from "./Loading";
+import DownloadIcon from "../Icons/DownloadIcon";
 
 export default function SubmittedAssignments() {
   const [loading, setloading] = useState(false);
@@ -14,7 +15,7 @@ export default function SubmittedAssignments() {
 
   async function fetchdata() {
     try {
-      const data = await axios
+      await axios
         .get("http://localhost:5000/submitted")
         .then((res) => {
           console.log(res.data);
@@ -49,10 +50,10 @@ export default function SubmittedAssignments() {
                   <td>{assignment.Subject}</td>
                   <td>
                     <a
-                      download="File"
+                      download={assignment.RollNo}
                       href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
                     >
-                      {assignment.File.name}
+                      <DownloadIcon/>
                     </a>
                   </td>
                   <td><input type="number" /></td>

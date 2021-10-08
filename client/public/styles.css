@@ -47,6 +47,21 @@ svg {
           transform: scale(1);
 }
 
+.download-icon {
+  fill: black;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.download-icon:hover {
+  cursor: pointer;
+}
+
+.download-icon:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
 .navbar-container {
   display: -ms-grid;
   display: grid;
@@ -801,10 +816,12 @@ svg {
 .submitted-container table tbody tr th {
   width: 100px;
   color: #5a1616;
+  border-bottom: 2px solid black;
 }
 
 .submitted-container table tbody tr td {
   text-align: center;
+  padding: 10px;
 }
 
 .submitted-container table tbody tr td input {
