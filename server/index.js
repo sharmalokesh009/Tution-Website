@@ -30,9 +30,12 @@ const SubmittedAssignments = new mongoose.Schema({
 })
 
 
+
 const assignments = mongoose.model('Assignments' , AssignmentSchema)
 const submittedassignments = mongoose.model('Submitted Assignments' , SubmittedAssignments)
 const approvedassignments = mongoose.model('Approved Assignments', SubmittedAssignments )
+
+
 app.get('/assignments' , (req,res) => {
     assignments.find({} , (err,results) => {
         if(err){
@@ -58,8 +61,9 @@ app.post('/upload', (req, res) => {
     if (req.files === null) {
       return res.status(400).json({ msg: 'No file uploaded' });
     }
-    
-    
+    assignments.deleteOne({_id : req.body.Id} , (err) => {
+        console.log(err);
+    })
     const file = req.files.file;
     const assignmentdetails = {
         RollNo : req.body.rollno,

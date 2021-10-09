@@ -386,7 +386,12 @@ svg{
 }
 
 .assignment-list-container{
-
+ 
+  .filename{
+   max-width:70px;
+    position: relative;
+    top: 40px;
+  }
   h1{
     text-align: center;
   }

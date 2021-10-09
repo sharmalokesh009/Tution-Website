@@ -536,6 +536,12 @@ svg {
   cursor: pointer;
 }
 
+.assignment-list-container .filename {
+  max-width: 70px;
+  position: relative;
+  top: 40px;
+}
+
 .assignment-list-container h1 {
   text-align: center;
 }
