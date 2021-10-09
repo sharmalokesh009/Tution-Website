@@ -28,6 +28,8 @@ export default function SubmittedAssignments() {
     }
   }
 
+
+
   return (
     <div className="submitted-container">
       <h1>Recently Submitted Assignments</h1>
@@ -58,8 +60,12 @@ export default function SubmittedAssignments() {
                   </td>
                   <td><input type="number" /></td>
                   <td>
-                    <ApproveIcon/>
-                    <DeclineIcon/>
+                    <p onClick={() => {
+                       axios.post('http://localhost:5000/approved' , {
+                        Id : assignment._id
+                      })
+                    }} ><ApproveIcon/></p>
+                    <p><DeclineIcon/></p>
                   </td>
                 </tr>
               );

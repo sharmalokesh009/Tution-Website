@@ -28,6 +28,7 @@ export default function AssignmentList() {
 
   function handlechange(e) {
     setuploadedfile(e.target.files[0]);
+    
     setsubject(e.target.name);
   }
 
@@ -83,7 +84,7 @@ export default function AssignmentList() {
                     id={`${index}-upload`}
                     hidden
                   />
-                  <label className="upload" for={`${index}-upload`}>
+                  <label className="upload" id={index} htmlFor={`${index}-upload`}>
                     Upload
                   </label>
                   <button onClick={handlesubmit} className="submit">

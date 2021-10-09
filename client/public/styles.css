@@ -48,7 +48,7 @@ svg {
 }
 
 .download-icon {
-  fill: black;
+  fill: #0278a7;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }

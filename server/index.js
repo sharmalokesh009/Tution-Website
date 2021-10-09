@@ -32,6 +32,7 @@ const SubmittedAssignments = new mongoose.Schema({
 
 const assignments = mongoose.model('Assignments' , AssignmentSchema)
 const submittedassignments = mongoose.model('Submitted Assignments' , SubmittedAssignments)
+const approvedassignments = mongoose.model('Approved Assignments', SubmittedAssignments )
 app.get('/assignments' , (req,res) => {
     assignments.find({} , (err,results) => {
         if(err){
@@ -43,7 +44,6 @@ app.get('/assignments' , (req,res) => {
 })
 
 app.get('/submitted' , (req,res) => {
-    console.log(req.body);
     submittedassignments.find({} , (err , results) => {
         if(err){
             console.log(err);
@@ -54,6 +54,7 @@ app.get('/submitted' , (req,res) => {
 })
 
 app.post('/upload', (req, res) => {
+    console.log(req.body);
     if (req.files === null) {
       return res.status(400).json({ msg: 'No file uploaded' });
     }
@@ -71,15 +72,22 @@ app.post('/upload', (req, res) => {
              console.log(err);
          }
      })
-    file.mv(`${__dirname}/Uploads/${file.name}`, err => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send(err);
-      }
-  
-      res.json({ fileName: file.name, filePath: `/Uploads/${file.name}` });
-    });
   });
+
+app.post('/approved' , (req,res) => {
+    submittedassignments.findById({_id : req.body.Id} , (err,results) => {
+        if(!err){
+            submittedassignments.deleteOne({_id : req.body.Id} , (err) => {
+                console.log(err);
+            })
+            approvedassignments.insertMany(results , (err) => {
+                if(err){
+                    console.log(err);
+                }
+            })
+        }
+    })
+})
 
 app.post('/assign' , (req,res) => {
     assignments.insertMany(req.body , (err) => {

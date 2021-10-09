@@ -2,6 +2,7 @@ import React from "react"
 import { HashRouter as Router , Link } from "react-router-dom"
 
 export default function Navbar(){
+    
     return <Router>
         <div className="navbar-container">
         <div className="navbar">
