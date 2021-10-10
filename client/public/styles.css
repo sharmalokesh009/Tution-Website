@@ -716,6 +716,20 @@ svg {
           justify-content: center;
 }
 
+.assignassignment-container .assign-form .assigned {
+  position: relative;
+  top: 200px;
+}
+
+.assignassignment-container .assign-form .assigned .goback {
+  color: green;
+  text-decoration: underline;
+}
+
+.assignassignment-container .assign-form .assigned .goback:hover {
+  cursor: pointer;
+}
+
 .assignassignment-container .assign-form form {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -513,7 +513,17 @@ svg{
     box-shadow: 0 0 2px black;
     grid-template-columns: auto;
     justify-content: center;
-    
+    .assigned{
+      position: relative;
+      top:200px;
+      .goback{
+        color: green;
+        text-decoration: underline;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
     form{
       
       display: flex;

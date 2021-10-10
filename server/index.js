@@ -34,6 +34,7 @@ const SubmittedAssignments = new mongoose.Schema({
 const assignments = mongoose.model('Assignments' , AssignmentSchema)
 const submittedassignments = mongoose.model('Submitted Assignments' , SubmittedAssignments)
 const approvedassignments = mongoose.model('Approved Assignments', SubmittedAssignments )
+const declinededassignments = mongoose.model('Declined Assignments', SubmittedAssignments )
 
 
 app.get('/assignments' , (req,res) => {
@@ -83,22 +84,45 @@ app.post('/approved' , (req,res) => {
         if(!err){
             submittedassignments.deleteOne({_id : req.body.Id} , (err) => {
                 console.log(err);
+                
             })
             approvedassignments.insertMany(results , (err) => {
+                if(!err){
+                    res.send("Deleted and Approved")
+                    
+                }
+            })
+            
+        }
+    })
+})
+
+app.post('/declined' , (req,res) => {
+    submittedassignments.findById({_id : req.body.Id} , (err,results) => {
+        if(!err){
+            submittedassignments.deleteOne({_id : req.body.Id} , (err) => {
+                console.log(err);
+            })
+            declinededassignments.insertMany(results , (err) => {
                 if(err){
                     console.log(err);
                 }
             })
+            res.send("Deleted and Declined")
         }
     })
 })
+
+
+
 
 app.post('/assign' , (req,res) => {
     assignments.insertMany(req.body , (err) => {
         if(err){
             console.log(err);
         }else{
-            console.log("Inserted Successfully");
+            res.send("Inserted Successfully");
+            
         }
     })
 })

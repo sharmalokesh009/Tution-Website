@@ -5,30 +5,28 @@ import DeclineIcon from "../Icons/DeclineIcon";
 import Loading from "./Loading";
 import DownloadIcon from "../Icons/DownloadIcon";
 
+
 export default function SubmittedAssignments() {
   const [loading, setloading] = useState(false);
   const [assignments, setassignments] = useState([]);
+  const [progress, setprogress] = useState(false);
+  
 
   useEffect(() => {
     fetchdata();
-  }, []);
+  }, [assignments]);
 
   async function fetchdata() {
     try {
-      await axios
-        .get("http://localhost:5000/submitted")
-        .then((res) => {
-          console.log(res.data);
-          setassignments(res.data);
+      await axios.get("http://localhost:5000/submitted").then((res) => {
+        setassignments(res.data);
 
-          setloading(true);
-        });
+        setloading(true);
+      });
     } catch (err) {
       console.log(err);
     }
   }
-
-
 
   return (
     <div className="submitted-container">
@@ -44,32 +42,63 @@ export default function SubmittedAssignments() {
               <th>Marks</th>
               <th>Status</th>
             </tr>
-            {assignments.map((assignment, index) => {
-              return (
-                <tr key={index}>
-                  <td>{assignment.RollNo}</td>
-                  <td>{assignment.Group}</td>
-                  <td>{assignment.Subject}</td>
-                  <td>
-                    <a
-                      download={assignment.RollNo}
-                      href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
-                    >
-                      <DownloadIcon/>
-                    </a>
-                  </td>
-                  <td><input type="number" /></td>
-                  <td>
-                    <p onClick={() => {
-                       axios.post('http://localhost:5000/approved' , {
-                        Id : assignment._id
-                      })
-                    }} ><ApproveIcon/></p>
-                    <p><DeclineIcon/></p>
-                  </td>
-                </tr>
-              );
-            })}
+            {progress ? (
+              <Loading left="250px" />
+            ) : (
+              assignments.map((assignment, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{assignment.RollNo}</td>
+                    <td>{assignment.Group}</td>
+                    <td>{assignment.Subject}</td>
+                    <td>
+                      <a
+                        download={assignment.RollNo}
+                        href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
+                      >
+                        <DownloadIcon />
+                      </a>
+                    </td>
+                    <td>
+                      <input type="number" />
+                    </td>
+                    <td>
+                      <p
+                        onClick={async () => {
+                          setprogress(true)
+                          await axios
+                            .post("http://localhost:5000/approved", {
+                              Id: assignment._id,
+                            })
+                            .then((res) => {
+                              console.log(res);
+                              setprogress(false)
+                            });
+                        }}
+                      >
+                        <ApproveIcon />
+                      </p>
+                      <p
+                        onClick={async () => {
+                          setprogress(true)
+                          await axios
+                            .post("http://localhost:5000/declined", {
+                              Id: assignment._id,
+                            })
+                            .then((res) => {
+                              console.log(res);
+                              setprogress(false)
+                            });
+                        }}
+                      >
+                        <DeclineIcon />
+                      </p>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
+            {}
           </tbody>
         </table>
       ) : (
