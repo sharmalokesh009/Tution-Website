@@ -7,8 +7,9 @@ import Footer from "./Components/Footer";
 import Assignments from "./Components/Assignments";
 import Staffhome from "./Components/Staffhome";
 import AssignAsssignment from "./Components/AssignAssignment";
-import AssignmentList from "./Components/AssignmentList";
 import SubmittedAssignments from "./Components/SubmittedAssignments";
+import AssignmentListType from "./Components/AssignmentListType";
+import Declined from "./Components/Declined";
 
 export default function App() {
   return (
@@ -50,13 +51,16 @@ export default function App() {
             <Assignments />
           </Route>
           <Route path="/pending">
-            <AssignmentList />
+            <AssignmentListType />
           </Route>
           <Route path="/assign">
             <AssignAsssignment />
           </Route>
           <Route path="/submitted">
             <SubmittedAssignments />
+          </Route>
+          <Route path='/declined'>
+            <Declined/>
           </Route>
         </Switch>
       </div>

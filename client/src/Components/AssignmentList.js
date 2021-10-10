@@ -3,32 +3,30 @@ import Assignment from "./Assignment";
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
 import axios from "axios";
-import AssignmentNav from "./AssignmentNav";
 
-export default function AssignmentList() {
+
+export default function AssignmentList(props) {
   const [loading, setloading] = useState(false);
   const [assignments, setasssignments] = useState([]);
 
-  async function fetchdata() {
-    try {
-      await axios.get("http://localhost:5000/assignments").then((res) => {
-        setasssignments(res.data);
-      });
-      setloading(true);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  
 
   useEffect(() => {
+    async function fetchdata() {
+      try {
+        await axios.get(`http://localhost:5000/${props.type}`).then((res) => {
+          setasssignments(res.data);
+        });
+        setloading(true);
+      } catch (e) {
+        console.log(e);
+      }
+    }
     fetchdata();
-  }, [assignments]);
+  }, [assignments , props]);
 
   return (
     <div>
-        <AssignmentNav />
-        <br />
-        <br />
         <h1 style={{textAlign:"center"}} >Assignments</h1>
         {loading ?<div>
       {assignments.map((assignment, index) => {

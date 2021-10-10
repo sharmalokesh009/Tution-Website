@@ -11,7 +11,9 @@ export default function Assignment(props) {
     formdata.append("rollno", 11801092);
     formdata.append("group", "4CE-3");
     formdata.append("subject", props.Subject);
+    formdata.append('title' , props.Title)
     formdata.append("Id", props.id);
+    formdata.append('type' , props.Type)
     async function postdata(){
     try {
       await axios.post("http://localhost:5000/upload", formdata, {

@@ -26,6 +26,8 @@ const SubmittedAssignments = new mongoose.Schema({
     RollNo : Number,
     Group : String,
     Subject : String,
+    Title : String,
+    Type : String,
     File : Object
 })
 
@@ -70,6 +72,8 @@ app.post('/upload', (req, res) => {
         RollNo : req.body.rollno,
         Group : req.body.group,
         Subject : req.body.subject,
+        Title : req.body.title,
+        Type : req.body.type,
         File : file
     }
      submittedassignments.insertMany(assignmentdetails , (err) => {
@@ -97,6 +101,12 @@ app.post('/approved' , (req,res) => {
     })
 })
 
+app.get('/declined' , (req,res) => {
+    declinededassignments.find({} , (err,results) => {
+        res.send(results);
+    })
+})
+
 app.post('/declined' , (req,res) => {
     submittedassignments.findById({_id : req.body.Id} , (err,results) => {
         if(!err){
@@ -104,11 +114,11 @@ app.post('/declined' , (req,res) => {
                 console.log(err);
             })
             declinededassignments.insertMany(results , (err) => {
-                if(err){
-                    console.log(err);
+                if(!err){
+                    res.send("Declined")
                 }
             })
-            res.send("Deleted and Declined")
+            
         }
     })
 })
