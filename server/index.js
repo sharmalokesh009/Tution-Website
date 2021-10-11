@@ -28,6 +28,7 @@ const SubmittedAssignments = new mongoose.Schema({
     Subject : String,
     Title : String,
     Type : String,
+    SubmissionDate:String,
     File : Object
 })
 
@@ -64,9 +65,19 @@ app.post('/upload', (req, res) => {
     if (req.files === null) {
       return res.status(400).json({ msg: 'No file uploaded' });
     }
+    
+   if(req.body.array === "assignments"){
     assignments.deleteOne({_id : req.body.Id} , (err) => {
         console.log(err);
     })
+   }
+    if(req.body.array === "declined"){
+    declinededassignments.deleteOne({_id : req.body.Id} , (err) => {
+        if(err){
+            console.log(err);
+        }
+    })
+}
     const file = req.files.file;
     const assignmentdetails = {
         RollNo : req.body.rollno,
@@ -74,11 +85,15 @@ app.post('/upload', (req, res) => {
         Subject : req.body.subject,
         Title : req.body.title,
         Type : req.body.type,
+        SubmissionDate:req.body.submissiondate, 
         File : file
     }
      submittedassignments.insertMany(assignmentdetails , (err) => {
          if(err){
              console.log(err);
+         }
+         if(!err){
+             res.send("Submitted")
          }
      })
   });

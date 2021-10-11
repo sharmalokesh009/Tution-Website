@@ -7,6 +7,6 @@ export default function Declined(){
         <AssignmentNav />
         <br />
         <br />
-        <AssignmentList type="declined" />
+        <AssignmentList type="declined" name="Declined Assignments" array="declined" />
     </div>
 }

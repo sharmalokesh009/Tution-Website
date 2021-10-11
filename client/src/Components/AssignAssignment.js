@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Progress from "./Progess";
+import AssignedIcon from "../Icons/AssignedIcon";
 
 export default function AssignAsssignment() {
   const [studentclass, setstudentclass] = useState("");
@@ -105,6 +106,7 @@ export default function AssignAsssignment() {
           <h1 className="assigned">
             Assigned
             <br />
+            <AssignedIcon/>
             <p
               className="goback"
               onClick={() => {

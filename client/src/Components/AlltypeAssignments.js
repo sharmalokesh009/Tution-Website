@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import axios from "axios";
 import { HashRouter as Router, Link } from "react-router-dom";
+import NoDataIcon from "../Icons/NoDataIcon";
 export default function AlltypeAssignments(props){
 
     const [loading, setloading] = useState(false);
@@ -36,7 +37,7 @@ export default function AlltypeAssignments(props){
       </h2>
       {loading ? (
         first3assignments.length === 0 ? (
-          <h1 style={{ textAlign: "center" }}>No Assignments</h1>
+          <h1 style={{ textAlign: "center" }}><NoDataIcon/><br/>No Assignments</h1>
         ) : (
           <div className="pending-works">
             {first3assignments.map((assignment, index) => {
@@ -49,7 +50,7 @@ export default function AlltypeAssignments(props){
               );
             })}
 
-            <Link to={`/${props.to}`}>See all</Link>
+            {assignments.length > 3 ? <Link to={`/${props.to}`}>See all</Link> : null}
           </div>
         )
       ) : (

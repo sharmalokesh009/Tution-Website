@@ -4,6 +4,7 @@ import ApproveIcon from "../Icons/ApproveIcon";
 import DeclineIcon from "../Icons/DeclineIcon";
 import Loading from "./Loading";
 import DownloadIcon from "../Icons/DownloadIcon";
+import NoDataIcon from "../Icons/NoDataIcon";
 
 export default function SubmittedAssignments() {
   const [loading, setloading] = useState(false);
@@ -44,6 +45,7 @@ export default function SubmittedAssignments() {
               fontWeight: "bolder",
             }}
           >
+            <NoDataIcon/><br/>
             No Assignments Submmitted
           </p>
         ) : (

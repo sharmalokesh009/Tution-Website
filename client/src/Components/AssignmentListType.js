@@ -7,6 +7,6 @@ export default function AssignmentListType(){
         <AssignmentNav />
         <br />
         <br />
-        <AssignmentList type="assignments" />
+        <AssignmentList type="assignments" name="Assignments" />
     </div>
 }
