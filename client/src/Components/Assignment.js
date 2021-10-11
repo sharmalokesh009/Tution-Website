@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
+import { useHistory } from "react-router";
 
 export default function Assignment(props) {
   const [loading, setloading] = useState(true);
-
+  axios.defaults.withCredentials = true;
+const history = useHistory();
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[])
   function handlechange(e) {
     const formdata = new FormData();
     formdata.append("file", e.target.files[0]);

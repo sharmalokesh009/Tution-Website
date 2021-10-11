@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AssignmentIcon from "../Icons/AssignmentIcon";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router, Link , useHistory } from "react-router-dom";
 import FeeIcon from "../Icons/FeeIcon";
 import InfoIcon from "../Icons/InfoIcon";
+import axios from "axios";
 
 export default function Studenthome() {
+  axios.defaults.withCredentials = true;
+const history = useHistory();
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[])
   return (
     <Router>
       <div className="studentinterface-container">

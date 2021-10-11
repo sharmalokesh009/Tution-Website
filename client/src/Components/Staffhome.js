@@ -1,8 +1,21 @@
-import React from "react"
-import {  HashRouter as Router , Link } from "react-router-dom"
+import axios from "axios";
+import React, { useEffect } from "react"
+import {  HashRouter as Router , Link ,useHistory } from "react-router-dom"
 import AssignIcon from "../Icons/AssignIcon"
 
 export default function Staffhome(){
+
+    axios.defaults.withCredentials = true;
+const history = useHistory();
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[])
+
     return <Router>
         <div className="staffhome-container">
         <div className="staffhome-items">

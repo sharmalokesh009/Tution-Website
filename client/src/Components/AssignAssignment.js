@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Progress from "./Progess";
 import AssignedIcon from "../Icons/AssignedIcon";
+import { useHistory } from "react-router";
 
 export default function AssignAsssignment() {
+
+  axios.defaults.withCredentials = true;
+  const history = useHistory();
+    useEffect(() => {
+      axios.get('http://localhost:5000/studentlogins').then(res => {
+        const loggedin = res.data.loggedin;
+        if(!loggedin){
+          history.push('/')
+        }
+      })
+    },[])
   const [studentclass, setstudentclass] = useState("");
   const [subject, setsubject] = useState("");
   const [title, settitle] = useState("");

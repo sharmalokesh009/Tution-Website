@@ -5,12 +5,24 @@ import DeclineIcon from "../Icons/DeclineIcon";
 import Loading from "./Loading";
 import DownloadIcon from "../Icons/DownloadIcon";
 import NoDataIcon from "../Icons/NoDataIcon";
+import { Redirect, useHistory } from "react-router";
 
 export default function SubmittedAssignments() {
   const [loading, setloading] = useState(false);
   const [assignments, setassignments] = useState([]);
   const [progress, setprogress] = useState(false);
   const [assignmentsempty, setassignmentsempty] = useState(false);
+ const history = useHistory();
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+       history.push('/') 
+      }
+    })
+  },[])
 
   useEffect(() => {
     fetchdata();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import axios from "axios";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router,useHistory, Link } from "react-router-dom";
 import NoDataIcon from "../Icons/NoDataIcon";
 export default function AlltypeAssignments(props){
 
@@ -11,7 +11,16 @@ export default function AlltypeAssignments(props){
     return index < 3;
   });
 
-  
+  axios.defaults.withCredentials = true;
+const history = useHistory();
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[])
 
   useEffect(() => {
     async function fetchdata() {

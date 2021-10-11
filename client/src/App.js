@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "./Components/Form";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch ,useHistory} from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Studenthome from "./Components/Studenthome";
 import Footer from "./Components/Footer";
@@ -10,27 +10,31 @@ import AssignAsssignment from "./Components/AssignAssignment";
 import SubmittedAssignments from "./Components/SubmittedAssignments";
 import AssignmentListType from "./Components/AssignmentListType";
 import Declined from "./Components/Declined";
+import axios from "axios";
 
 export default function App() {
+
+  
+
   return (
     <Router>
       <div className="app-container">
         <Switch>
           <Route path="/" exact>
-            <Form staffdisplay="none" studentdisplay="none" />
+            <Form display="none" />
           </Route>
           <Route path="/staff">
             <Form
-              staffandstudentdisplay="none"
-              studentdisplay="none"
+              identity="Staff"
               path="staffhome"
+              database="staff"
             />
           </Route>
           <Route path="/student">
             <Form
-              staffandstudentdisplay="none"
-              staffdisplay="none"
+              identity="Student"
               path="studenthome"
+              database="student"
             />
           </Route>
           <Route path="/studenthome">

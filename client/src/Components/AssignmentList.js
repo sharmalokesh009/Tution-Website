@@ -4,13 +4,23 @@ import { useState, useEffect } from "react";
 import Loading from "./Loading";
 import axios from "axios";
 import NoDataIcon from "../Icons/NoDataIcon";
+import { useHistory } from "react-router";
 
 
 export default function AssignmentList(props) {
   const [loading, setloading] = useState(false);
   const [assignments, setasssignments] = useState([]);
 const [assignmentsempty , setassignmentsempty] = useState(false);
-  
+axios.defaults.withCredentials = true;
+const history = useHistory();
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[])
 
   useEffect(() => {
     async function fetchdata() {

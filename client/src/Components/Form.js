@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Progess from "./Progess";
 import {
   HashRouter as Router,
@@ -10,18 +10,53 @@ import {
 import StaffIcon from "../Icons/StaffIcon";
 import StudentIcon from "../Icons/StudentIcon";
 import Progress from "./Progess";
+import axios from "axios";
 
 export default function Form(props) {
   const history = useHistory();
   const [clicked, setclicked] = useState(false);
   const [usernamefilled, setusernamefilled] = useState("");
   const [passwordfilled, setpasswordfilled] = useState("");
+  const studentdetails = {
+    Username : usernamefilled,
+    Password : passwordfilled
+}
 
   function handleusername(e) {
     setusernamefilled(e.target.value);
   }
   function handlepassword(e) {
     setpasswordfilled(e.target.value);
+  }
+
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/studentlogins').then(res => {
+      const loggedin = res.data.loggedin;
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[])
+
+  async function PostData(){
+    try{
+      setclicked(true);
+      await axios.post(`http://localhost:5000/${props.database}` , studentdetails).then( res => {
+        if(res.data){
+        setclicked(false);
+        history.push(`/${props.path}`);
+      }else{
+        setclicked(false);
+        
+        alert("Wrong Password")
+      }
+    })
+    }
+    catch(e){
+      console.log(e);
+    }
   }
 
   function handleclick(e) {
@@ -33,10 +68,9 @@ export default function Form(props) {
       alert("Password required !");
     }
     if (usernamefilled !== "" && passwordfilled !== "") {
-      setclicked(true);
-      setTimeout(() => {
-        history.push(`/${props.path}`);
-      }, 2000);
+      
+      PostData();
+     
     }
   }
 
@@ -62,8 +96,8 @@ export default function Form(props) {
               </div>
             </Route>
           </Switch>
-          <form style={{display:props.staffdisplay}}>
-            <h1>Staff Login</h1>
+          <form style={{display : props.display}}>
+            <h1>{props.identity} Login</h1>
             <label>Username</label>
             <input type="text" onChange={handleusername} required />
             <label>Password</label>
@@ -73,17 +107,7 @@ export default function Form(props) {
             </div>
           </form>
 
-          <form style={{display:props.studentdisplay}}>
-            <h1>Student Login</h1>
-            <label>Username</label>
-            <input type="text" onChange={handleusername} required />
-            <label>Password</label>
-            <input type="password" onChange={handlepassword} required />
 
-            <div className="login" onClick={handleclick}>
-              {clicked ? <Progess /> : "Log in"}
-            </div>
-          </form>
         </div>
       </div>
     </Router>
