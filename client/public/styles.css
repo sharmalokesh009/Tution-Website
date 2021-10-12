@@ -848,6 +848,54 @@ svg {
   width: 50px;
 }
 
+.popup {
+  width: 400px;
+  height: 100px;
+  background-color: white;
+  border: 5px solid white;
+  -webkit-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  -webkit-animation: popup 0.3s;
+          animation: popup 0.3s;
+}
+
+.popup .cancel-icon {
+  float: right;
+}
+
+.popup .cancel-icon:hover {
+  cursor: pointer;
+}
+
+.popup h1 {
+  color: red;
+  text-align: center;
+  width: 380px;
+}
+
+@-webkit-keyframes popup {
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 400px;
+    height: 100px;
+  }
+}
+
+@keyframes popup {
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 400px;
+    height: 100px;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
   .form-container {
     -ms-grid-columns: auto;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Progess from "./Progess";
 import {
   HashRouter as Router,
   Switch,
@@ -11,10 +10,12 @@ import StaffIcon from "../Icons/StaffIcon";
 import StudentIcon from "../Icons/StudentIcon";
 import Progress from "./Progess";
 import axios from "axios";
+import PopUp from "./PopUp";
 
 export default function Form(props) {
   const history = useHistory();
   const [clicked, setclicked] = useState(false);
+  const [wrongpassword , setwrongpassword] = useState(false)
   const [usernamefilled, setusernamefilled] = useState("");
   const [passwordfilled, setpasswordfilled] = useState("");
   const studentdetails = {
@@ -32,13 +33,14 @@ export default function Form(props) {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
+    
     axios.get('http://localhost:5000/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
         history.push('/')
       }
     })
-  },[])
+  },[history])
 
   async function PostData(){
     try{
@@ -49,8 +51,7 @@ export default function Form(props) {
         history.push(`/${props.path}`);
       }else{
         setclicked(false);
-        
-        alert("Wrong Password")
+        setwrongpassword(true);
       }
     })
     }
@@ -81,7 +82,7 @@ export default function Form(props) {
           Rohit's Tuition Classes
           <br />(RTC)
         </h1>
-        <div className="form">
+        {wrongpassword ? <PopUp/> : <div className="form">
           <Switch>
             <Route path="/" exact>
               <div className="staffandstudent" style={{display:props.staffandstudentdisplay}}>
@@ -108,7 +109,7 @@ export default function Form(props) {
           </form>
 
 
-        </div>
+        </div>}
       </div>
     </Router>
   );

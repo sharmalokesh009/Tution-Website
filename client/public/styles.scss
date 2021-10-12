@@ -1,7 +1,6 @@
-
 $primary-font: "Poppins", sans-serif;
 $primary-color: rgb(90, 22, 22);
-$secondary-color:rgb(235, 235, 235);
+$secondary-color: rgb(235, 235, 235);
 * {
   margin: 0;
   padding: 0;
@@ -11,49 +10,49 @@ $secondary-color:rgb(235, 235, 235);
 body {
   font-family: $primary-font;
 }
-svg{
-    fill: $primary-color;
+svg {
+  fill: $primary-color;
 }
 
-.approve-icon{
+.approve-icon {
   fill: green;
   transition: all 0.3s;
-  &:hover{
+  &:hover {
     transform: scale(1.06);
     cursor: pointer;
   }
-  &:active{
+  &:active {
     transform: scale(1);
   }
 }
 
-.decline-icon{
+.decline-icon {
   fill: red;
   transition: all 0.3s;
-  &:hover{
+  &:hover {
     transform: scale(1.06);
     cursor: pointer;
   }
-  &:active{
+  &:active {
     transform: scale(1);
   }
 }
-.download-icon{
-  fill:rgb(2, 120, 167);
+.download-icon {
+  fill: rgb(2, 120, 167);
   transition: all 0.3s;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
-  &:active{
+  &:active {
     transform: scale(0.9);
   }
 }
 
-.navbar-container{
+.navbar-container {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-  .navbar{
+  .navbar {
     display: flex;
     justify-content: space-around;
     height: 40px;
@@ -61,12 +60,12 @@ svg{
     border-bottom-left-radius: 7px;
     width: 400px;
     background-color: $primary-color;
-    a{
+    a {
       position: relative;
       top: 10px;
       color: white;
       text-decoration: none;
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
@@ -97,7 +96,6 @@ svg{
     font-variant: small-caps;
   }
   .form {
-
     width: 300px;
     height: 300px;
     background: linear-gradient(
@@ -110,28 +108,28 @@ svg{
     display: grid;
     grid-template-columns: auto;
     justify-content: center;
-    .staffandstudent{
+    .staffandstudent {
+      display: flex;
+      width: 300px;
+      justify-content: space-around;
+      margin-top: 120px;
+      div {
         display: flex;
-        width: 300px;
-        justify-content: space-around;
-        margin-top: 120px;
-        div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            a{
-                color: black;
-            }
+        flex-direction: column;
+        align-items: center;
+        a {
+          color: black;
         }
+      }
     }
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      h1{
-          margin: 0;
-          font-size: 30px;
+      h1 {
+        margin: 0;
+        font-size: 30px;
       }
       label {
         color: black;
@@ -149,7 +147,7 @@ svg{
         margin-bottom: 10px;
       }
 
-      .login{
+      .login {
         color: white;
         padding: 12px;
         border-radius: 5px;
@@ -182,11 +180,11 @@ svg{
   }
 }
 
-.loading-container{
+.loading-container {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-  .loading-icon{
+  .loading-icon {
     width: 150px;
     height: 150px;
     border-top: 7px solid $primary-color;
@@ -204,21 +202,25 @@ svg{
 }
 
 @keyframes loading {
-  0% {transform:rotate(0deg);}
-  100% {transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.studentinterface-container{
+.studentinterface-container {
   margin-top: 200px;
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-  .options{
+  .options {
     display: grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
     column-gap: 200px;
-    div{
+    div {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -226,257 +228,254 @@ svg{
       line-height: 3;
       padding-top: 30px;
       width: 150px;
-    height: 150px;
-    background-color: $secondary-color;
-    border-radius: 10px;
-      a{
+      height: 150px;
+      background-color: $secondary-color;
+      border-radius: 10px;
+      a {
         color: black;
       }
     }
   }
 }
 
-.footer-container{
+.footer-container {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
   margin-top: 270px;
-  footer{
+  footer {
     width: 400px;
     height: 70px;
     background-color: $primary-color;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     line-height: 2.5;
-    .links{
+    .links {
       display: flex;
       justify-content: space-around;
-      a{
+      a {
         color: white;
         text-decoration: none;
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
       }
     }
-    p{
+    p {
       text-align: center;
       color: white;
       font-size: 13px;
     }
   }
 }
-.assignments-navbar{
+.assignments-navbar {
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 55px;
   border-bottom: 3px solid grey;
   padding-top: 5px;
-  .logo{
+  .logo {
     display: flex;
     margin-left: 20px;
-    h4{
+    h4 {
       line-height: 3;
     }
   }
-  .rollno{
+  .rollno {
     margin-right: 20px;
-    p{
+    p {
       font-variant: small-caps;
       font-weight: bolder;
     }
   }
 }
-.assignments-container{
-  
-  .assignments-stuff{
+.assignments-container {
+  .assignments-stuff {
     display: grid;
     grid-template-columns: auto;
     justify-content: center;
-  .pending-container{
-    margin-top: 50px;
-    width: 1200px;
+    .pending-container {
+      margin-top: 50px;
+      width: 1200px;
 
-    h2{
-      display: flex;
-      font-size: 27px;
-      font-weight: bolder;
-      p{
-        font-size: 15px;
-        height: 23px;
-        width: 23px;
-        text-align: center;
-        background-color: red;
-        border-radius: 50%;
-        color: white;
-      }
-    }
-    .pending-works{
-      margin-top: 30px;
-      display: flex;
-      justify-content: space-around;
-      a{
-        line-height: 5;
-        color: black;
-        text-decoration: underline;
-      }
-      div{
-        width: 300px;
-        height: 100px;
-        background-color: $secondary-color;
-        line-height: 2;
-        border-radius: 10px;
-        transition: all 0.3s;
-        &:hover{
-          cursor: pointer;
-          background-color: rgb(214, 214, 214);
-        }
-        &:active{
-          transform: scale(0.98);
-        }
-        h3{
-          color: $primary-color;
+      h2 {
+        display: flex;
+        font-size: 27px;
+        font-weight: bolder;
+        p {
+          font-size: 15px;
+          height: 23px;
+          width: 23px;
           text-align: center;
-          font-weight: bolder;
-        }
-        h4{
-          text-align: center;
-        }
-        p{
-          text-align: center;
+          background-color: red;
+          border-radius: 50%;
+          color: white;
         }
       }
-    
-    }
-  }
-  .subjects-container{
-    margin-top: 50px;
-    h2{
-      font-size: 27px;
-      font-weight: bolder;
-    }
-    .subjects{
-      display: flex;
-      justify-content: space-around;
-      margin-top: 30px;
-      
-      a{
-        color: black;
-        line-height: 4;
-      }
-      div{
-        width: 200px;
-        height: 80px;
-        background-color: $secondary-color;
-        line-height: 2.7;
-        border-radius: 10px;
-        h2{
-          color: $primary-color;
-          text-align: center;
+      .pending-works {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-around;
+        a {
+          line-height: 5;
+          color: black;
           text-decoration: underline;
-          &:hover{
+        }
+        div {
+          width: 300px;
+          height: 100px;
+          background-color: $secondary-color;
+          line-height: 2;
+          border-radius: 10px;
+          transition: all 0.3s;
+          &:hover {
             cursor: pointer;
+            background-color: rgb(214, 214, 214);
+          }
+          &:active {
+            transform: scale(0.98);
+          }
+          h3 {
+            color: $primary-color;
+            text-align: center;
+            font-weight: bolder;
+          }
+          h4 {
+            text-align: center;
+          }
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+    .subjects-container {
+      margin-top: 50px;
+      h2 {
+        font-size: 27px;
+        font-weight: bolder;
+      }
+      .subjects {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+
+        a {
+          color: black;
+          line-height: 4;
+        }
+        div {
+          width: 200px;
+          height: 80px;
+          background-color: $secondary-color;
+          line-height: 2.7;
+          border-radius: 10px;
+          h2 {
+            color: $primary-color;
+            text-align: center;
+            text-decoration: underline;
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
       }
     }
   }
 }
-}
 
-.assignment-list-container{
- 
-  .filename{
-   max-width:70px;
+.assignment-list-container {
+  .filename {
+    max-width: 70px;
     position: relative;
     top: 40px;
   }
-  h1{
+  h1 {
     text-align: center;
   }
-  .list{
+  .list {
     display: grid;
     grid-template-columns: auto;
     justify-content: center;
-  .list-item{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap:20px ;
-    .chapterandtime{
+    .list-item {
       display: grid;
-      grid-template-columns: auto auto ;
-      justify-content: space-around;
-      width: 500px;
-      height: 100px;
-      border-radius: 10px;
-      background-color:$secondary-color ;
-    div{
-      line-height: 1.8;
-      h2{
-        color: $primary-color;
+      grid-template-columns: auto auto auto;
+      column-gap: 20px;
+      .chapterandtime {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-around;
+        width: 500px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: $secondary-color;
+        div {
+          line-height: 1.8;
+          h2 {
+            color: $primary-color;
+          }
+        }
+        .time {
+          margin-top: 15px;
+          line-height: 2;
+          color: red;
+          p {
+            color: black;
+          }
+        }
+      }
+      button {
+        background-color: rgb(7, 168, 7);
+        height: 40px;
+        width: 80px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-family: $primary-font;
+        font-size: 16px;
+        color: white;
+        position: relative;
+        top: 30px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .submit {
+        background-color: rgb(7, 168, 7);
+      }
+      .upload {
+        background-color: rgb(5, 101, 156);
+      }
+      label {
+        height: 40px;
+        position: relative;
+        top: 30px;
+        width: 80px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        color: white;
+        padding: 10px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
-    .time{
-      margin-top: 15px;
-      line-height: 2;
-      color: red;
-      p{
-        color: black;
-      }
-    }
-    }
-   button{
-     background-color: rgb(7, 168, 7);
-     height: 40px;
-     width: 80px;
-     border: none;
-     border-radius: 5px;
-     outline: none;
-     font-family:$primary-font;
-     font-size: 16px;
-     color: white;
-    position: relative;
-    top: 30px;
-    &:hover{
-      cursor: pointer;
-    }
-   }
-   .submit{
-    background-color: rgb(7, 168, 7);
-   }
-   .upload{
-    background-color: rgb(5, 101, 156);
-   }
-  label{
-    height: 40px;
-    position: relative;
-    top: 30px;
-    width: 80px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    color: white;
-    padding: 10px;
-    &:hover{
-      cursor: pointer;
-    }
-  }
-  }
   }
 }
 
-.staffhome-container{
+.staffhome-container {
   margin-top: 250px;
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-  .staffhome-items{
+  .staffhome-items {
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: center;
     column-gap: 40px;
-    div{
+    div {
       width: 200px;
       height: 100px;
       background-color: $secondary-color;
@@ -484,7 +483,7 @@ svg{
       grid-template-columns: auto;
       justify-content: center;
       border-radius: 5px;
-      a{
+      a {
         margin-top: 20px;
         color: black;
         font-weight: bolder;
@@ -496,15 +495,15 @@ svg{
   }
 }
 
-.assignassignment-container{
+.assignassignment-container {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
   margin-top: 50px;
-  h1{
+  h1 {
     text-align: center;
   }
-  .assign-form{
+  .assign-form {
     width: 500px;
     height: 500px;
     border: 4px solid $primary-color;
@@ -513,67 +512,65 @@ svg{
     box-shadow: 0 0 2px black;
     grid-template-columns: auto;
     justify-content: center;
-    .assigned{
+    .assigned {
       position: relative;
-      top:100px;
-      .goback{
+      top: 100px;
+      .goback {
         color: green;
         text-decoration: underline;
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
       }
     }
-    form{
-      
+    form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content:center;
-      label{
+      justify-content: center;
+      label {
         font-weight: bolder;
       }
-      span{
+      span {
         margin-bottom: 25px;
-        select{
+        select {
           width: 100px;
           border: 2px solid black;
           border-radius: 3px;
-          font-family:$primary-font;
-          option{
-            font-family:$primary-font;
+          font-family: $primary-font;
+          option {
+            font-family: $primary-font;
           }
         }
-        input{
+        input {
           width: 250px;
           height: 30px;
           border-radius: 3px;
-          font-family:$primary-font;
+          font-family: $primary-font;
           border: 2px solid black;
         }
         display: flex;
-        justify-content:space-between;
-        .marks{
+        justify-content: space-between;
+        .marks {
           width: 80px;
         }
-        .dateinput{
+        .dateinput {
           width: 150px;
         }
       }
-      
-      .description{
-        
-        textarea{
+
+      .description {
+        textarea {
           text-align: center;
-          font-family:$primary-font;
+          font-family: $primary-font;
           border-radius: 3px;
         }
       }
-      button{
+      button {
         background-color: $primary-color;
         color: white;
         font-weight: bolder;
-        font-family:$primary-font;
+        font-family: $primary-font;
         letter-spacing: 1.5px;
         padding: 8px;
         border: none;
@@ -581,7 +578,7 @@ svg{
         padding-left: 15px;
         padding-right: 15px;
         transition: all 0.3s;
-        &:hover{
+        &:hover {
           background-color: rgb(128, 40, 40);
           cursor: pointer;
         }
@@ -590,29 +587,28 @@ svg{
   }
 }
 
-.submitted-container{
+.submitted-container {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-  h1{
+  h1 {
     text-align: center;
     margin-bottom: 50px;
     margin-top: 50px;
   }
-  table{
-    
+  table {
     background-color: $secondary-color;
-    tbody{
-      tr{
-        th{
+    tbody {
+      tr {
+        th {
           width: 100px;
           color: $primary-color;
           border-bottom: 2px solid black;
         }
-        td{
+        td {
           text-align: center;
           padding: 10px;
-          input{
+          input {
             width: 50px;
           }
         }
@@ -621,19 +617,56 @@ svg{
   }
 }
 
+
+  .popup {
+    width: 400px;
+    height: 100px;
+    background-color: white;
+    border: 5px solid white;
+    box-shadow: 0 0 5px black;
+    border-radius: 10px;
+    animation: popup 0.3s;
+    .cancel-icon {
+      float: right;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    h1 {
+      color: red;
+      text-align: center;
+      width: 380px;
+    }
+  }
+
+
+@keyframes popup {
+  from {
+    width: 0;
+    height: 0;
+   
+  }
+  to {
+    width: 400px;
+    height: 100px;
+    
+  }
+}
+
+
+
 @media only screen and (max-width: 1000px) {
   .form-container {
     grid-template-columns: auto;
   }
-  .studentinterface-container{
+  .studentinterface-container {
     margin-top: 100px;
-    .options{
+    .options {
       grid-template-columns: auto;
       row-gap: 30px;
     }
   }
-  .footer-container{
+  .footer-container {
     margin-top: 100px;
   }
 }
-
