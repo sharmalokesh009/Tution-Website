@@ -11,6 +11,7 @@ import StudentIcon from "../Icons/StudentIcon";
 import Progress from "./Progess";
 import axios from "axios";
 import PopUp from "./PopUp";
+import CancelIcon from "../Icons/CancelIcon";
 
 export default function Form(props) {
   const history = useHistory();
@@ -82,7 +83,7 @@ export default function Form(props) {
           Rohit's Tuition Classes
           <br />(RTC)
         </h1>
-        {wrongpassword ? <PopUp/> : <div className="form">
+        {wrongpassword ? <PopUp text="Wrong Password !" icon={<p onClick={() => {console.log(setwrongpassword(false));}} ><CancelIcon/></p>} /> : <div className="form">
           <Switch>
             <Route path="/" exact>
               <div className="staffandstudent" style={{display:props.staffandstudentdisplay}}>

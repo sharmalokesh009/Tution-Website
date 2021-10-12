@@ -16,7 +16,7 @@ const history = useHistory();
         history.push('/')
       }
     })
-  },[])
+  },[history])
   return (
     <Router>
       <div className="assignments-container">

@@ -619,10 +619,10 @@ svg {
 
 
   .popup {
+    position: relative;
+    top: 100px;
     width: 400px;
     height: 100px;
-    background-color: white;
-    border: 5px solid white;
     box-shadow: 0 0 5px black;
     border-radius: 10px;
     animation: popup 0.3s;
@@ -632,10 +632,10 @@ svg {
         cursor: pointer;
       }
     }
-    h1 {
+    h2{
       color: red;
       text-align: center;
-      width: 380px;
+     
     }
   }
 

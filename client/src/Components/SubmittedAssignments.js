@@ -5,7 +5,7 @@ import DeclineIcon from "../Icons/DeclineIcon";
 import Loading from "./Loading";
 import DownloadIcon from "../Icons/DownloadIcon";
 import NoDataIcon from "../Icons/NoDataIcon";
-import { Redirect, useHistory } from "react-router";
+import {useHistory } from "react-router";
 
 export default function SubmittedAssignments() {
   const [loading, setloading] = useState(false);
@@ -22,7 +22,7 @@ export default function SubmittedAssignments() {
        history.push('/') 
       }
     })
-  },[])
+  },[history])
 
   useEffect(() => {
     fetchdata();

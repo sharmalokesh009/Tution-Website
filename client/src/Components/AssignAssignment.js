@@ -15,7 +15,7 @@ export default function AssignAsssignment() {
           history.push('/')
         }
       })
-    },[])
+    },[history])
   const [studentclass, setstudentclass] = useState("");
   const [subject, setsubject] = useState("");
   const [title, settitle] = useState("");

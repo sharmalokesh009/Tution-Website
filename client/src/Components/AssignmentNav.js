@@ -14,7 +14,7 @@ export default function AssignmentNav(){
           history.push('/')
         }
       })
-    },[])
+    },[history])
     return  <div className="assignments-navbar">
     <div className="logo">
       <AssignmentIcon width="50px" height="50px" />

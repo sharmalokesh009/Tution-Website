@@ -849,10 +849,10 @@ svg {
 }
 
 .popup {
+  position: relative;
+  top: 100px;
   width: 400px;
   height: 100px;
-  background-color: white;
-  border: 5px solid white;
   -webkit-box-shadow: 0 0 5px black;
           box-shadow: 0 0 5px black;
   border-radius: 10px;
@@ -868,10 +868,9 @@ svg {
   cursor: pointer;
 }
 
-.popup h1 {
+.popup h2 {
   color: red;
   text-align: center;
-  width: 380px;
 }
 
 @-webkit-keyframes popup {

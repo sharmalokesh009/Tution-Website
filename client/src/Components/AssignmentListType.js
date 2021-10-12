@@ -14,7 +14,7 @@ export default function AssignmentListType(){
             history.push('/')
           }
         })
-      },[])
+      },[history])
     return <div>
         <AssignmentNav />
         <br />

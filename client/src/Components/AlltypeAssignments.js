@@ -20,7 +20,7 @@ const history = useHistory();
         history.push('/')
       }
     })
-  },[])
+  },[history])
 
   useEffect(() => {
     async function fetchdata() {

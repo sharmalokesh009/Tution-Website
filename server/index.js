@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const bodyParser = require('body-parser')
 const session = require("express-session");
 const cookieparser = require("cookie-parser")
@@ -31,7 +32,7 @@ app.use(session({
 }));
 
 mongoose.connect(
-  "mongodb+srv://Lokesh:lokesh12@cluster0.r2lwk.mongodb.net/DAV?retryWrites=true&w=majority"
+  process.env.URL
 );
 
 const AssignmentSchema = new mongoose.Schema({
@@ -230,6 +231,6 @@ app.post("/assign", (req, res) => {
   });
 });
 
-app.listen(5000, () => {
+app.listen( process.env.PORT || 5000, () => {
   console.log("Server Started");
 });

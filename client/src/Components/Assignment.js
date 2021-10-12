@@ -14,7 +14,7 @@ const history = useHistory();
         history.push('/')
       }
     })
-  },[])
+  },[history])
   function handlechange(e) {
     const formdata = new FormData();
     formdata.append("file", e.target.files[0]);

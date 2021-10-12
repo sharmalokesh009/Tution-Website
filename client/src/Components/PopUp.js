@@ -1,11 +1,11 @@
-import React from "react"
-import CancelIcon from "../Icons/CancelIcon"
+import React from "react";
 
-export default function PopUp(){
-    return <div className="popup">
-            <CancelIcon/>
-            <br/>
-            <h1>Wrong Password !</h1>
-        </div>
-
+export default function PopUp(props) {
+  return (
+    <div className="popup">
+      <div>{props.icon}</div>
+      <br />
+      <h2>{props.text}</h2>
+    </div>
+  );
 }
