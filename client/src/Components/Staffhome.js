@@ -8,7 +8,7 @@ export default function Staffhome(){
     axios.defaults.withCredentials = true;
 const history = useHistory();
   useEffect(() => {
-    axios.get('http://localhost:5000/studentlogins').then(res => {
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
         history.push('/')

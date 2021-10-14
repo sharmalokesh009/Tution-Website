@@ -11,12 +11,19 @@ export default function SubmittedAssignments() {
   const [loading, setloading] = useState(false);
   const [assignments, setassignments] = useState([]);
   const [progress, setprogress] = useState(false);
+  const [progress2, setprogress2] = useState(false);
   const [assignmentsempty, setassignmentsempty] = useState(false);
+  const [marks , setmarks] = useState(Number);
  const history = useHistory();
   axios.defaults.withCredentials = true;
 
+
+const currentwidth = document.querySelector('body').scrollWidth;
+
+
   useEffect(() => {
-    axios.get('http://localhost:5000/studentlogins').then(res => {
+    
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
        history.push('/') 
@@ -30,7 +37,7 @@ export default function SubmittedAssignments() {
 
   async function fetchdata() {
     try {
-      await axios.get("http://localhost:5000/submitted").then((res) => {
+      await axios.get("https://tuitionwebsite.herokuapp.com/submitted").then((res) => {
         setassignments(res.data);
         if (res.data.length === 0) {
           setassignmentsempty(true);
@@ -40,6 +47,10 @@ export default function SubmittedAssignments() {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  function handlemarks(e){
+    setmarks(e.target.value);
   }
 
   return (
@@ -61,75 +72,130 @@ export default function SubmittedAssignments() {
             No Assignments Submmitted
           </p>
         ) : (
-          <table>
-            <tbody>
-              <tr>
-                <th>Roll No</th>
-                <th>Batch</th>
-                <th>Subject</th>
-                <th>Document</th>
-                <th>Marks</th>
-                <th>Status</th>
-              </tr>
-              {progress ? (
-                <Loading left="250px" />
-              ) : (
-                assignments.map((assignment, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{assignment.RollNo}</td>
-                      <td>{assignment.Group}</td>
-                      <td>{assignment.Subject}</td>
-                      <td>
-                        <a
-                          download={assignment.RollNo}
-                          href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
-                        >
-                          <DownloadIcon />
-                        </a>
-                      </td>
-                      <td>
-                        <input type="number" />
-                      </td>
-                      <td>
-                        <p
-                          onClick={async () => {
-                            setprogress(true);
-                            await axios
-                              .post("http://localhost:5000/approved", {
-                                Id: assignment._id,
-                              })
-                              .then((res) => {
-                                console.log(res);
-                                setprogress(false);
-                              });
-                          }}
-                        >
-                          <ApproveIcon />
-                        </p>
-                        <p
-                          onClick={async () => {
-                            setprogress(true);
-                            await axios
-                              .post("http://localhost:5000/declined", {
-                                Id: assignment._id,
-                              })
-                              .then((res) => {
-                                console.log(res);
-                                setprogress(false);
-                              });
-                          }}
-                        >
-                          <DeclineIcon />
-                        </p>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-              {}
-            </tbody>
-          </table>
+         currentwidth <= 500 ? progress2 ? (
+          <Loading left="0px" />
+        ) : (
+          assignments.map((assignment, index) => {
+            return (
+              <div key={index} className="about-assignment">
+                <div className="info">
+                <p>{assignment.RollNo}</p>
+                <p>{assignment.Group}</p>
+                <p style={{fontWeight:"bolder"}}>{assignment.Subject}</p>
+                </div>
+                <div>
+                <a
+                       download={assignment.RollNo}
+                       href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
+                     >
+                       <DownloadIcon />
+                     </a>
+                     <p
+                       onClick={async () => {
+                         setprogress2(true);
+                         await axios
+                           .post("https://tuitionwebsite.herokuapp.com/approved", {
+                             Id: assignment._id,
+                             Marks : marks
+                           })
+                           .then((res) => {
+                             console.log(res);
+                             setprogress(false);
+                           });
+                       }}
+                     >
+                       <ApproveIcon />
+                     </p>
+                     <p
+                       onClick={async () => {
+                         setprogress2(true);
+                         await axios
+                           .post("https://tuitionwebsite.herokuapp.com/declined", {
+                             Id: assignment._id,
+                           })
+                           .then((res) => {
+                             console.log(res);
+                             setprogress(false);
+                           });
+                       }}
+                     >
+                       <DeclineIcon />
+                     </p>
+                </div>
+              </div>
+             
+            );
+          })
+        ) :  <table>
+         <tbody>
+           <tr>
+             <th>Roll No</th>
+             <th>Batch</th>
+             <th>Subject</th>
+             <th>Document</th>
+             <th>Marks</th>
+             <th>Status</th>
+           </tr>
+           {progress ? (
+             <Loading left="250px" />
+           ) : (
+             assignments.map((assignment, index) => {
+               return (
+                 <tr key={index}>
+                   <td>{assignment.RollNo}</td>
+                   <td>{assignment.Group}</td>
+                   <td>{assignment.Subject}</td>
+                   <td>
+                     <a
+                       download={assignment.RollNo}
+                       href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
+                     >
+                       <DownloadIcon />
+                     </a>
+                   </td>
+                   <td>
+                     <input type="number" onChange={handlemarks} />
+                   </td>
+                   <td>
+                     <p
+                       onClick={async () => {
+                         setprogress(true);
+                         await axios
+                           .post("https://tuitionwebsite.herokuapp.com/approved", {
+                             Id: assignment._id,
+                             Marks : marks
+                           })
+                           .then((res) => {
+                             console.log(res);
+                             setprogress(false);
+                           });
+                       }}
+                     >
+                       <ApproveIcon />
+                     </p>
+                     <p
+                       onClick={async () => {
+                         setprogress(true);
+                         await axios
+                           .post("https://tuitionwebsite.herokuapp.com/declined", {
+                             Id: assignment._id,
+                           })
+                           .then((res) => {
+                             console.log(res);
+                             setprogress(false);
+                           });
+                       }}
+                     >
+                       <DeclineIcon />
+                     </p>
+                   </td>
+                 </tr>
+               );
+             })
+           )}
+           {}
+         </tbody>
+       </table>
         )
       ) : (
         <Loading />

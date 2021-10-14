@@ -10,7 +10,7 @@ export default function Assignments() {
   axios.defaults.withCredentials = true;
 const history = useHistory();
   useEffect(() => {
-    axios.get('http://localhost:5000/studentlogins').then(res => {
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
         history.push('/')
@@ -21,8 +21,9 @@ const history = useHistory();
     <Router>
       <div className="assignments-container">
         <AssignmentNav />
-        <AlltypeAssignments name="Assignments" type="assignments" to='pending'/>
+        <AlltypeAssignments name="Pending" type="assignments" to='pending'/>
         <AlltypeAssignments name="Declined" type="declined" to='declined'/>
+        <AlltypeAssignments name="Approved" type="approved" to='approved'/>
       </div>
     </Router>
   );

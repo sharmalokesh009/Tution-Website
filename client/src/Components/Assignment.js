@@ -5,10 +5,11 @@ import { useHistory } from "react-router";
 
 export default function Assignment(props) {
   const [loading, setloading] = useState(true);
+  const approved = props.approved;
   axios.defaults.withCredentials = true;
 const history = useHistory();
   useEffect(() => {
-    axios.get('http://localhost:5000/studentlogins').then(res => {
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
         history.push('/')
@@ -26,12 +27,13 @@ const history = useHistory();
     formdata.append("submissiondate", props.SubmissionDate);
     formdata.append("type", props.Type);
     formdata.append('array' , props.array)
+    formdata.append('totalmarks' , props.totalmarks)
 
     async function postdata() {
       try {
         setloading(false);
         await axios
-          .post("http://localhost:5000/upload", formdata, {
+          .post("https://tuitionwebsite.herokuapp.com/upload", formdata, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -65,7 +67,10 @@ const history = useHistory();
                   Submission Date :<p>{props.SubmissionDate}</p>
                 </h4>
               </div>
-              <input
+             {approved ? <div className='marks-container'>
+              <h3 className="marks"><h2 >{props.Marks}</h2>/{props.totalmarks}</h3>
+             </div>:<div>
+             <input
                 type="file"
                 onChange={handlechange}
                 id={`${props.index}-upload`}
@@ -78,6 +83,7 @@ const history = useHistory();
               >
                 Upload
               </label>
+             </div>}
               <br />
             </div>
           </div>

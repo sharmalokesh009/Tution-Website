@@ -9,7 +9,7 @@ export default function AssignAsssignment() {
   axios.defaults.withCredentials = true;
   const history = useHistory();
     useEffect(() => {
-      axios.get('http://localhost:5000/studentlogins').then(res => {
+      axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
         const loggedin = res.data.loggedin;
         if(!loggedin){
           history.push('/')
@@ -30,7 +30,7 @@ export default function AssignAsssignment() {
     Subject: subject,
     Title: title,
     Type: type,
-    Marks: marks,
+    TotalMarks: marks,
     SubmissionDate: submissiondate,
     Description: description,
   };
@@ -39,7 +39,7 @@ export default function AssignAsssignment() {
     assignmentdetails.Subject,
     assignmentdetails.Title,
     assignmentdetails.Type,
-    assignmentdetails.Marks,
+    assignmentdetails.TotalMarks,
   ];
   function handlestudentclass(e) {
     const value = e.target.value;
@@ -79,7 +79,7 @@ export default function AssignAsssignment() {
     try {
       setprogress(true)
       const resp = await axios.post(
-        "http://localhost:5000/assign",
+        "https://tuitionwebsite.herokuapp.com/assign",
         assignmentdetails
       );
       console.log(resp.data);

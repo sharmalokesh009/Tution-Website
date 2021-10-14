@@ -13,13 +13,14 @@ const app = express();
 app.use(fileUpload());
 app.use(express.json());
 app.use(cors({
-    origin : "http://localhost:3000",
+    origin : ["http://localhost:3000","https://dav-school-afe85.web.app"],
     methods : ["GET" , "POST"],
     credentials : true
 }));
 
 app.use(cookieparser());
 app.use(bodyParser.urlencoded({extended:true}) )
+app.set("trust proxy", 1);
 
 app.use(session({
     key : "userid",
@@ -27,7 +28,9 @@ app.use(session({
     resave : false,
     saveUninitialized : false,
     cookie : {
-        expires : 60 * 60 * 24
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+        expires : 1000 * 60 * 60 * 24
     }
 }));
 
@@ -40,7 +43,7 @@ const AssignmentSchema = new mongoose.Schema({
   Subject: String,
   Title: String,
   Type: String,
-  Marks: Number,
+  TotalMarks : Number,
   SubmissionDate: String,
   Description: String,
 });
@@ -52,6 +55,8 @@ const SubmittedAssignments = new mongoose.Schema({
   Title: String,
   Type: String,
   SubmissionDate: String,
+  Marks : Number,
+  TotalMarks : Number,
   File: Object,
 });
 
@@ -95,6 +100,7 @@ app.post("/student", (req, res) => {
                   }else{
                       req.session.user = results;
                       console.log(req.session.user);
+                      console.log(ismatch);
                       res.send(ismatch);
                   }
               })
@@ -172,6 +178,7 @@ app.post("/upload", (req, res) => {
     Subject: req.body.subject,
     Title: req.body.title,
     Type: req.body.type,
+    TotalMarks : req.body.totalmarks,
     SubmissionDate: req.body.submissiondate,
     File: file,
   };
@@ -191,7 +198,17 @@ app.post("/approved", (req, res) => {
       submittedassignments.deleteOne({ _id: req.body.Id }, (err) => {
         console.log(err);
       });
-      approvedassignments.insertMany(results, (err) => {
+      approvedassignments.insertMany({
+        RollNo: results.RollNo,
+  Group: results.Group,
+  Subject: results.Subject,
+  Title: results.Title,
+  Type: results.Type,
+  SubmissionDate: results.SubmissionDate,
+  Marks : req.body.Marks,
+  TotalMarks : results.TotalMarks,
+  File: results.File,
+      }, (err) => {
         if (!err) {
           res.send("Deleted and Approved");
         }
@@ -205,6 +222,12 @@ app.get("/declined", (req, res) => {
     res.send(results);
   });
 });
+app.get("/approved", (req, res) => {
+  approvedassignments.find({}, (err, results) => {
+    res.send(results);
+  });
+});
+
 
 app.post("/declined", (req, res) => {
   submittedassignments.findById({ _id: req.body.Id }, (err, results) => {

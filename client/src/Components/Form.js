@@ -35,7 +35,7 @@ export default function Form(props) {
 
   useEffect(() => {
     
-    axios.get('http://localhost:5000/studentlogins').then(res => {
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
         history.push('/')
@@ -46,7 +46,7 @@ export default function Form(props) {
   async function PostData(){
     try{
       setclicked(true);
-      await axios.post(`http://localhost:5000/${props.database}` , studentdetails).then( res => {
+      await axios.post(`https://tuitionwebsite.herokuapp.com/${props.database}` , studentdetails).then( res => {
         if(res.data){
         setclicked(false);
         history.push(`/${props.path}`);

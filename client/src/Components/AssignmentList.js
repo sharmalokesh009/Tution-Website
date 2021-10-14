@@ -14,7 +14,7 @@ const [assignmentsempty , setassignmentsempty] = useState(false);
 axios.defaults.withCredentials = true;
 const history = useHistory();
   useEffect(() => {
-    axios.get('http://localhost:5000/studentlogins').then(res => {
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data.loggedin;
       if(!loggedin){
         history.push('/')
@@ -25,7 +25,7 @@ const history = useHistory();
   useEffect(() => {
     async function fetchdata() {
       try {
-        await axios.get(`http://localhost:5000/${props.type}`).then((res) => {
+        await axios.get(`https://tuitionwebsite.herokuapp.com/${props.type}`).then((res) => {
           setasssignments(res.data);
           if(res.data.length === 0){
             setassignmentsempty(true)
@@ -54,6 +54,9 @@ const history = useHistory();
           SubmissionDate={assignment.SubmissionDate}
           index={index}
           array = {props.type}
+          approved = {props.approved}
+          Marks = {assignment.Marks}
+          totalmarks = {assignment.TotalMarks}
           />;
         })}
         </div>

@@ -11,6 +11,7 @@ import SubmittedAssignments from "./Components/SubmittedAssignments";
 import AssignmentListType from "./Components/AssignmentListType";
 import Declined from "./Components/Declined";
 import PopUp from "./Components/PopUp";
+import Approved from "./Components/Approved";
 
 
 export default function App() {
@@ -67,6 +68,9 @@ export default function App() {
           </Route>
           <Route path='/declined'>
             <Declined/>
+          </Route>
+          <Route path='/approved'>
+            <Approved/>
           </Route>
           <Route path='/popup'>
             <PopUp/>

@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import AssignmentList from "./AssignmentList";
 import AssignmentNav from "./AssignmentNav";
 
-export default function Declined(){
+export default function Approved(){
 
     axios.defaults.withCredentials = true;
 const history = useHistory();
@@ -21,6 +21,6 @@ const history = useHistory();
         <AssignmentNav />
         <br />
         <br />
-        <AssignmentList type="declined" name="Declined Assignments" array="declined" approved={false}  />
+        <AssignmentList type="approved" name="Approved Assignments" array="approved" approved={true} />
     </div>
 }

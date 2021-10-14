@@ -8,7 +8,7 @@ export default function AssignmentNav(){
   axios.defaults.withCredentials = true;
   const history = useHistory();
     useEffect(() => {
-      axios.get('http://localhost:5000/studentlogins').then(res => {
+      axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
         const loggedin = res.data.loggedin;
         if(!loggedin){
           history.push('/')
@@ -21,7 +21,7 @@ export default function AssignmentNav(){
       <h4>ASSIGNMENTS</h4>
     </div>
     <div className="rollno">
-      <p>11801092</p>
+      <p>11801053</p>
       <p>3CE-4</p>
     </div>
   </div>
