@@ -13,6 +13,7 @@ import axios from "axios";
 import PopUp from "./PopUp";
 import CancelIcon from "../Icons/CancelIcon";
 
+
 export default function Form(props) {
   const history = useHistory();
   const [clicked, setclicked] = useState(false);
@@ -31,12 +32,12 @@ export default function Form(props) {
     setpasswordfilled(e.target.value);
   }
 
-  axios.defaults.withCredentials = true;
+
 
   useEffect(() => {
     
     axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-      const loggedin = res.data.loggedin;
+      const loggedin = res.data;
       if(!loggedin){
         history.push('/')
       }
@@ -47,7 +48,8 @@ export default function Form(props) {
     try{
       setclicked(true);
       await axios.post(`https://tuitionwebsite.herokuapp.com/${props.database}` , studentdetails).then( res => {
-        if(res.data){
+        
+      if(res.data){
         setclicked(false);
         history.push(`/${props.path}`);
       }else{

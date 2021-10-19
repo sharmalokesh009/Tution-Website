@@ -5,16 +5,18 @@ import AssignIcon from "../Icons/AssignIcon"
 
 export default function Staffhome(){
 
-    axios.defaults.withCredentials = true;
+    
 const history = useHistory();
-  useEffect(() => {
-    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-      const loggedin = res.data.loggedin;
-      if(!loggedin){
-        history.push('/')
-      }
-    })
-  },[history])
+useEffect(() => {
+    
+  axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+    const loggedin = res.data;
+    console.log(res);
+    if(!loggedin){
+      history.push('/')
+    }
+  })
+},[history])
 
     return <Router>
         <div className="staffhome-container">

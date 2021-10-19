@@ -5,16 +5,18 @@ import AssignmentIcon from "../Icons/AssignmentIcon";
 
 
 export default function AssignmentNav(){
-  axios.defaults.withCredentials = true;
+
   const history = useHistory();
-    useEffect(() => {
-      axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-        const loggedin = res.data.loggedin;
-        if(!loggedin){
-          history.push('/')
-        }
-      })
-    },[history])
+  useEffect(() => {
+    
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+      const loggedin = res.data;
+      console.log(res);
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[history])
     return  <div className="assignments-navbar">
     <div className="logo">
       <AssignmentIcon width="50px" height="50px" />

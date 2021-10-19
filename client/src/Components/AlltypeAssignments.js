@@ -10,18 +10,18 @@ export default function AlltypeAssignments(props) {
     return index < 3;
   });
 
-  axios.defaults.withCredentials = true;
+
   const history = useHistory();
   useEffect(() => {
-    axios
-      .get("https://tuitionwebsite.herokuapp.com/studentlogins")
-      .then((res) => {
-        const loggedin = res.data.loggedin;
-        if (!loggedin) {
-          history.push("/");
-        }
-      });
-  }, [history]);
+    
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+      const loggedin = res.data;
+      console.log(res);
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[history])
 
   useEffect(() => {
     async function fetchdata() {
@@ -45,7 +45,9 @@ export default function AlltypeAssignments(props) {
         <div className="pending-container">
           <h2>
             {props.name} <p>{assignments.length}</p>
+            
           </h2>
+
           {loading ? (
             first3assignments.length === 0 ? (
               <p style={{ textAlign: "center",color:"red" , fontWeight:"bolder" }}>

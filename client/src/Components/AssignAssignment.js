@@ -6,16 +6,18 @@ import { useHistory } from "react-router";
 
 export default function AssignAsssignment() {
 
-  axios.defaults.withCredentials = true;
+  
   const history = useHistory();
-    useEffect(() => {
-      axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-        const loggedin = res.data.loggedin;
-        if(!loggedin){
-          history.push('/')
-        }
-      })
-    },[history])
+  useEffect(() => {
+    
+    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+      const loggedin = res.data;
+      console.log(res);
+      if(!loggedin){
+        history.push('/')
+      }
+    })
+  },[history])
   const [studentclass, setstudentclass] = useState("");
   const [subject, setsubject] = useState("");
   const [title, settitle] = useState("");
@@ -186,7 +188,7 @@ export default function AssignAsssignment() {
               <textarea
                 onChange={handledescription}
                 rows="6"
-                cols="46"
+                cols="30"
                 placeholder="Description about Assignment"
               />
             </span>

@@ -16,36 +16,30 @@ svg {
 
 .approve-icon {
   fill: green;
-  transition: all 0.3s;
+  
   &:hover {
-    transform: scale(1.06);
+    
     cursor: pointer;
   }
-  &:active {
-    transform: scale(1);
-  }
+
 }
 
 .decline-icon {
   fill: red;
-  transition: all 0.3s;
+  
   &:hover {
-    transform: scale(1.06);
+    
     cursor: pointer;
   }
-  &:active {
-    transform: scale(1);
-  }
+  
 }
 .download-icon {
   fill: rgb(2, 120, 167);
-  transition: all 0.3s;
+  
   &:hover {
     cursor: pointer;
   }
-  &:active {
-    transform: scale(0.9);
-  }
+  
 }
 
 .navbar-container {
@@ -77,13 +71,7 @@ svg {
   grid-template-columns: auto auto;
   justify-content: center;
   column-gap: 150px;
-  
-  background: linear-gradient(
-    to bottom,
-    rgb(247, 247, 247),
-    rgb(221, 221, 221)
-  );
-  height: 721px;
+
   padding-top: 150px;
   h1 {
     font-size: 50px;
@@ -192,14 +180,7 @@ svg {
     animation: loading 1s linear infinite;
   }
 }
-@-webkit-keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
+
 
 @keyframes loading {
   0% {
@@ -292,17 +273,17 @@ svg {
 }
 .assignments-container {
   .assignments-stuff {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: center;
+    
     .pending-container {
       margin-top: 50px;
-      width: 1200px;
+      
 
       h2 {
         display: flex;
         font-size: 27px;
         font-weight: bolder;
+        justify-content: left;
+        margin-left: 20px;
         p {
           font-size: 15px;
           height: 23px;
@@ -342,14 +323,12 @@ svg {
             background-color: $secondary-color;
             line-height: 2;
             border-radius: 10px;
-            transition: all 0.3s;
+            
             &:hover {
               cursor: pointer;
               background-color: rgb(214, 214, 214);
             }
-            &:active {
-              transform: scale(0.98);
-            }
+           
             h3 {
               color: $primary-color;
               text-align: center;
@@ -616,7 +595,7 @@ svg {
         border-radius: 3px;
         padding-left: 15px;
         padding-right: 15px;
-        transition: all 0.3s;
+        
         &:hover {
           background-color: rgb(128, 40, 40);
           cursor: pointer;
@@ -642,7 +621,7 @@ svg {
     justify-content: center;
     column-gap: 100px;
     width: 250px;
-    height: 100px;
+    height: 110px;
     background: linear-gradient(to right , rgb(236, 236, 236) ,rgb(238, 237, 237));
     border-radius: 10px;
     margin-bottom: 30px;
@@ -654,6 +633,10 @@ svg {
     }
     .info{
       line-height: 2;
+    }
+    .marks{
+      width: 30px;
+      margin-bottom: 10px;
     }
   }
   table {
@@ -789,6 +772,14 @@ svg {
       width: 400px;
     }
   }
+
+  .staffhome-container{
+    margin-top: 70px;
+    .staffhome-items{
+    grid-template-columns: auto;
+    row-gap: 20px;
+  }
+}
 
   .footer-container {
     margin-top: 100px;

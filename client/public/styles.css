@@ -15,51 +15,26 @@ svg {
 
 .approve-icon {
   fill: green;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .approve-icon:hover {
-  -webkit-transform: scale(1.06);
-          transform: scale(1.06);
   cursor: pointer;
-}
-
-.approve-icon:active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
 }
 
 .decline-icon {
   fill: red;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .decline-icon:hover {
-  -webkit-transform: scale(1.06);
-          transform: scale(1.06);
   cursor: pointer;
-}
-
-.decline-icon:active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
 }
 
 .download-icon {
   fill: #0278a7;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .download-icon:hover {
   cursor: pointer;
-}
-
-.download-icon:active {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
 }
 
 .navbar-container {
@@ -106,9 +81,6 @@ svg {
           justify-content: center;
   -webkit-column-gap: 150px;
           column-gap: 150px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#dddddd));
-  background: linear-gradient(to bottom, #f7f7f7, #dddddd);
-  height: 721px;
   padding-top: 150px;
 }
 
@@ -270,9 +242,11 @@ svg {
 @-webkit-keyframes loading {
   0% {
     -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -412,19 +386,8 @@ svg {
   font-weight: bolder;
 }
 
-.assignments-container .assignments-stuff {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto;
-      grid-template-columns: auto;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 .assignments-container .assignments-stuff .pending-container {
   margin-top: 50px;
-  width: 1200px;
 }
 
 .assignments-container .assignments-stuff .pending-container h2 {
@@ -433,6 +396,10 @@ svg {
   display: flex;
   font-size: 27px;
   font-weight: bolder;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  margin-left: 20px;
 }
 
 .assignments-container .assignments-stuff .pending-container h2 p {
@@ -490,18 +457,11 @@ svg {
   background-color: #ebebeb;
   line-height: 2;
   border-radius: 10px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .assignments-container .assignments-stuff .pending-container .pending-works .assignment .assignment-details div:hover {
   cursor: pointer;
   background-color: #d6d6d6;
-}
-
-.assignments-container .assignments-stuff .pending-container .pending-works .assignment .assignment-details div:active {
-  -webkit-transform: scale(0.98);
-          transform: scale(0.98);
 }
 
 .assignments-container .assignments-stuff .pending-container .pending-works .assignment .assignment-details div h3 {
@@ -858,8 +818,6 @@ svg {
   border-radius: 3px;
   padding-left: 15px;
   padding-right: 15px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .assignassignment-container .assign-form form button:hover {
@@ -900,7 +858,7 @@ svg {
   -webkit-column-gap: 100px;
           column-gap: 100px;
   width: 250px;
-  height: 100px;
+  height: 110px;
   background: -webkit-gradient(linear, left top, right top, from(#ececec), to(#eeeded));
   background: linear-gradient(to right, #ececec, #eeeded);
   border-radius: 10px;
@@ -916,6 +874,11 @@ svg {
 
 .submitted-container .about-assignment .info {
   line-height: 2;
+}
+
+.submitted-container .about-assignment .marks {
+  width: 30px;
+  margin-bottom: 10px;
 }
 
 .submitted-container table {
@@ -1068,6 +1031,14 @@ svg {
   }
   .assignassignment-container .assign-form {
     width: 400px;
+  }
+  .staffhome-container {
+    margin-top: 70px;
+  }
+  .staffhome-container .staffhome-items {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    row-gap: 20px;
   }
   .footer-container {
     margin-top: 100px;

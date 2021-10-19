@@ -6,16 +6,17 @@ import InfoIcon from "../Icons/InfoIcon";
 import axios from "axios";
 
 export default function Studenthome() {
-  axios.defaults.withCredentials = true;
+
 const history = useHistory();
-  useEffect(() => {
-    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-      const loggedin = res.data.loggedin;
-      if(!loggedin){
-        history.push('/')
-      }
-    })
-  },[history])
+useEffect(() => {
+
+  axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+    const loggedin = res.data;
+    if(!loggedin){
+      history.push('/')
+    }
+  })
+},[history])
   return (
     <Router>
       <div className="studentinterface-container">

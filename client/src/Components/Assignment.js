@@ -6,16 +6,18 @@ import { useHistory } from "react-router";
 export default function Assignment(props) {
   const [loading, setloading] = useState(true);
   const approved = props.approved;
-  axios.defaults.withCredentials = true;
+
 const history = useHistory();
-  useEffect(() => {
-    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-      const loggedin = res.data.loggedin;
-      if(!loggedin){
-        history.push('/')
-      }
-    })
-  },[history])
+useEffect(() => {
+    
+  axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+    const loggedin = res.data;
+    console.log(res);
+    if(!loggedin){
+      history.push('/')
+    }
+  })
+},[history])
   function handlechange(e) {
     const formdata = new FormData();
     formdata.append("file", e.target.files[0]);

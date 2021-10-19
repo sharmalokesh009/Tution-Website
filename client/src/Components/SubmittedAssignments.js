@@ -15,22 +15,21 @@ export default function SubmittedAssignments() {
   const [assignmentsempty, setassignmentsempty] = useState(false);
   const [marks , setmarks] = useState(Number);
  const history = useHistory();
-  axios.defaults.withCredentials = true;
+  
 
 
 const currentwidth = document.querySelector('body').scrollWidth;
 
 
-  useEffect(() => {
+useEffect(() => {
     
-    axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
-      const loggedin = res.data.loggedin;
-      if(!loggedin){
-       history.push('/') 
-      }
-    })
-  },[history])
-
+  axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
+    const loggedin = res.data;
+    if(!loggedin){
+      history.push('/')
+    }
+  })
+},[history])
   useEffect(() => {
     fetchdata();
   }, [assignments]);
@@ -81,15 +80,15 @@ const currentwidth = document.querySelector('body').scrollWidth;
                 <div className="info">
                 <p>{assignment.RollNo}</p>
                 <p>{assignment.Group}</p>
-                <p style={{fontWeight:"bolder"}}>{assignment.Subject}</p>
-                </div>
-                <div>
                 <a
                        download={assignment.RollNo}
                        href={`data:${assignment.File.mimetype};base64,${assignment.File.data}`}
                      >
                        <DownloadIcon />
                      </a>
+                </div>
+                <div>
+                <input className="marks" type="number" onChange={handlemarks} />
                      <p
                        onClick={async () => {
                          setprogress2(true);
