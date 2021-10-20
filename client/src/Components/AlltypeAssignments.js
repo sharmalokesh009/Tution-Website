@@ -16,7 +16,10 @@ export default function AlltypeAssignments(props) {
     
     axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data;
-      console.log(res);
+     
+
+
+      
       if(!loggedin){
         history.push('/')
       }
@@ -69,7 +72,7 @@ export default function AlltypeAssignments(props) {
                         <p>{assignment.Title}</p>
                         <h4>{assignment.Type}</h4>
                         </div>
-                        <p className="marks"><p style={{color:"lightgreen"}}>{assignment.Marks}</p>/{assignment.TotalMarks}</p>
+                        <h4 className="marks"><p style={{color:"lightgreen"}}>{assignment.Marks}</p>/{assignment.TotalMarks}</h4>
                       </div> : 
                       <div className="assignment-details" >
                       <div>

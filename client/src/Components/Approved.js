@@ -11,7 +11,6 @@ useEffect(() => {
     
   axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
     const loggedin = res.data;
-    console.log(res);
     if(!loggedin){
       history.push('/')
     }

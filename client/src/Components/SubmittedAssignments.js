@@ -98,7 +98,7 @@ useEffect(() => {
                              Marks : marks
                            })
                            .then((res) => {
-                             console.log(res);
+                             
                              setprogress(false);
                            });
                        }}
@@ -113,7 +113,7 @@ useEffect(() => {
                              Id: assignment._id,
                            })
                            .then((res) => {
-                             console.log(res);
+                            
                              setprogress(false);
                            });
                        }}
@@ -165,7 +165,7 @@ useEffect(() => {
                              Marks : marks
                            })
                            .then((res) => {
-                             console.log(res);
+                             
                              setprogress(false);
                            });
                        }}
@@ -180,7 +180,7 @@ useEffect(() => {
                              Id: assignment._id,
                            })
                            .then((res) => {
-                             console.log(res);
+                             
                              setprogress(false);
                            });
                        }}

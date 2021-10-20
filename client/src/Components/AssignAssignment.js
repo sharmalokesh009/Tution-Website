@@ -12,7 +12,7 @@ export default function AssignAsssignment() {
     
     axios.get('https://tuitionwebsite.herokuapp.com/studentlogins').then(res => {
       const loggedin = res.data;
-      console.log(res);
+     
       if(!loggedin){
         history.push('/')
       }
@@ -80,11 +80,11 @@ export default function AssignAsssignment() {
   const sendPostRequest = async () => {
     try {
       setprogress(true)
-      const resp = await axios.post(
+      await axios.post(
         "https://tuitionwebsite.herokuapp.com/assign",
         assignmentdetails
       );
-      console.log(resp.data);
+    
       setprogress(false);
       setassigned(true)
     } catch (err) {
